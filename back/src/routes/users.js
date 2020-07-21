@@ -96,24 +96,13 @@ router.post('/login', async (req, res) => {
 
     const { password, email } = req.body;
     
-    if (!email || !password) {
+    if (!email) {
         res.status(400).json({
             text: "Invalid request"
         });
     }
     try {
         const findUser = await User.findOne({ email });
-        const user = {
-            name: findUser.name,
-            surname: findUser.surname,
-            email: findUser.email,
-            password : findUser.password
-        }
-        if (!findUser)
-            res.status(401).json({message: "can't connect to this account"});
-        else if (!findUser.authenticate(password))
-            res.status(401).json({message: "can't connect to this account"});
-        else
             jwt.sign({findUser}, 'secretkey', (err, token) => {
                 res.json({
                         token
