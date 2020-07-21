@@ -1,0 +1,659 @@
+{
+	"info": {
+		"_postman_id": "8e058dc1-f04c-464b-80fa-143f90cb276d",
+		"name": "EpiKodi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Video",
+			"item": [
+				{
+					"name": "get searched video",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/video/search/?title=Course %234 - Part B&tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"video",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Course #4 - Part B"
+								},
+								{
+									"key": "tags",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload video ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZjA1YmJhMzc2ZTgzMTEwYzhjY2YyNjgiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkYzIyZTVhMGMkMSRiZGQ1ODZlOGUwNTIxNjcwYjhkOWFmYWUwNzVkNDQxN2I4ODhlNmVjIiwibXlWaWRlb3MiOltdLCJfX3YiOjB9LCJpYXQiOjE1OTQyMTEyNDR9._XlvDJd61Z16t3XbeeiCjy7ofVbE1aC7tzgKJMjobdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"test video\",\n    \"videoLink\" : \"assets/AboutBan1935_256kb.rm.ram\",\n    \"description\" : \"ceci est une description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/video/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"video",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Create User ",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\" : \"User1\",\n\t\"surname\" : \"User1\",\n\t\"email\" : \"User1@epitech.eu\",\n\t\"password\" : \"Password1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\" : \"User1@epitech.eu\",\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "PATCH",
+					"item": [
+						{
+							"name": "change username and usersurname",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZWRjZjllNjJiMjQwYzc2NGE1NTExNTQiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkMjc2YjM4YTMkMSQxMGU3M2YwMDVmOGRhOTY3ZTYyMDI1MzJlYjg1NWI3ODcwMDBkZGY1IiwiZmF2b3JpdGVzIjpbeyJzb3VyY2UiOnsiaWQiOm51bGwsIm5hbWUiOiJDaG93aG91bmQifSwiX2lkIjoiNWVkZDA5Y2I3NjM4ZDQ3ODNiNTA3NTI1IiwiYXV0aG9yIjoic29jY2VybW9tMTMiLCJ0aXRsZSI6IkNPVklEIDE5IHBpY25pYy0tbmVlZCBzdWdnZXN0aW9ucyEiLCJkZXNjcmlwdGlvbiI6IkkgaGFkIGFuIFwiYWhhIVwiIG1vbWVudCB0aGlzIG1vcm5pbmcgd2hlbiBJIHJlYWxpemVkIHRoYXQgSSB3b3VsZCBub3QgYmUgY29tZm9ydGFibGUgZWF0aW5nIGZpbmdlciBmb29kcyBvZiBhbnkgc29ydCB1bmxlc3MgSSBjb3VsZCB3YXNoIG15IGhhbmRzIHdlbGwgd2l0aCB2ZXJ5IHdhcm0gd2F0ZXIgYW5kIHNvYXAgYmVmb3JlIGVhdGluZywgd2hpY2ggaXMgbm90IHBvc3NpYmxlIGF0IHRoZSBwaWNuaWMgc2l0ZS4gTXkgaGFuZHMganVzdCBkb24ndCBmZeKApiIsInVybCI6Imh0dHBzOi8vd3d3LmNob3dob3VuZC5jb20vcG9zdC9jb3ZpZC0xOS1waWNuaWMtc3VnZ2VzdGlvbnMtMTA5MTk5ND9jb21tZW50SWQ9MTAyNjY2MTkjMTAyNjY2MTkiLCJ1cmxUb0ltYWdlIjoiaHR0cHM6Ly9jaG93aG91bmQxLmNic2lzdGF0aWMuY29tL3Mvb2dfaW1hZ2VfZGVmYXVsdC0wYTMxMzdmMGY2MWMwMGNjMGYwNDE5NGFhYjJmMWQ1Zi5qcGciLCJwdWJsaXNoZWRBdCI6IjIwMjAtMDYtMDdUMTA6NTA6MTZaIiwiY29udGVudCI6IkEgY291cGxlIHdlIGtub3cgdHJlYXRlZCB1cyB0byBhIGxvdmVseSBvdXRpbmcgcHJlLUNPVklEIDE5LiBXZSBoYWQgcGxhbm5lZCB0byBoYXZlIHRoZW0gb3ZlciBmb3IgYSBuaWNlIGhvbWUtY29va2VkIGRpbm5lciBhcyBhIHdheSB0byBleHByZXNzIG91ciBncmF0aXR1ZGUuIEJ1dCBub3csIHNpbmNlIHdlIGFyZSBhbGwgb3ZlciA2NSBhbmQgdGjigKYgWys1MDcgY2hhcnNdIn1dLCJfX3YiOjAsImFsYnVtcyI6W3siYWxidW0iOlt7InNvdXJjZSI6eyJpZCI6bnVsbCwibmFtZSI6Ikhvd3N3ZWV0ZWF0cy5jb20ifSwiX2lkIjoiNWVkZTUyMzI5NDU5NTA4ZGQ3MWI0ZGRiIiwiYXV0aG9yIjoiSmVzc2ljYSIsInRpdGxlIjoiV2hhdCBUbyBFYXQgVGhpcyBXZWVrOiA2LzcvMjAuIiwiZGVzY3JpcHRpb24iOiJPb29vaCBldmVyeXRoaW5nIG9uIHRoZSBtZW51IHRoaXMgd2VlayBpcyBzbyBnb29kISBUaGlzIG1pZ2h0IGJlIG15IGZhdm9yaXRlIHdlZWsgb2YgbWVhbHMgeWV0LiBMZXTigJlzIGtpY2sgdGhpbmdzIG9mZiB3aXRoIGEgbWVhdGxlc3MgbWVhbHM6IHRoZXNlIGJhamEgZ3JhaW4gYm93bHMhIFlvdSBjYW4gYWx3YXlzIGFkZCBjaGlja2VuIG9yIGJlYW5zIGlmIHlvdeKAmWQgbGlrZS4gVGhpcyBncmlsbGVkIGNoaWNrZW4gc3RyYXdiZXJyeSBzYWxhZCBpcyB1cOKApiIsInVybCI6Imh0dHBzOi8vd3d3Lmhvd3N3ZWV0ZWF0cy5jb20vMjAyMC8wNi93aGF0LXRvLWVhdC10aGlzLXdlZWstNi03LTIwLyIsInVybFRvSW1hZ2UiOiJodHRwczovL3d3dy5ob3dzd2VldGVhdHMuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDIwLzA2L3N0cmF3YmVycnktcG9wcHlzZWVkLXNhbGFkLUktaG93c3dlZXRlYXRzLmNvbS04LTEuanBnIiwicHVibGlzaGVkQXQiOiIyMDIwLTA2LTA3VDEwOjQ1OjQ2WiIsImNvbnRlbnQiOiJieSBKZXNzaWNhIG9uIEp1bmUgNywgMjAyMCAwMFxyXG5Pb29vaCBldmVyeXRoaW5nIG9uIHRoZSBtZW51IHRoaXMgd2VlayBpcyBzbyBnb29kIVxyXG5UaGlzIG1pZ2h0IGJlIG15IGZhdm9yaXRlIHdlZWsgb2YgbWVhbHMgeWV0LlxyXG5MZXTigJlzIGtpY2sgdGhpbmdzIG9mZiB3aXRoIGEgbWVhdGxlc3MgbWVhbHM6IHRoZXNlIGJhamEgZ3JhaW4gYm93bHMhIFnigKYgWys5NTggY2hhcnNdIn1dLCJfaWQiOiI1ZWRlNDhiZjJjMDc4YThjNWJlNDU4MjkiLCJ0aXRsZSI6IkZpcnN0IEFsYnVtIiwidXJsVG9JbWFnZSI6InVybCIsImRlc2NyaXB0aW9uIjoidGhpcyBpcyB0aGUgZmlyc3QgZGVzY3JpcHRpb24ifSx7ImFsYnVtIjpbeyJzb3VyY2UiOnsiaWQiOm51bGwsIm5hbWUiOiJTcGFyYm90ZS5kZSJ9LCJfaWQiOiI1ZWUwZTQ2MTBlZTViZWI1MDllNzExZjgiLCJhdXRob3IiOiJzdGVmYW4iLCJ0aXRsZSI6IlBlcHBhIFBpZzogSGFwcHkgTXJzLiBDaGlja2VuIGbDvHIgQW5kcm9pZCB1bmQgaU9zIGdyYXRpcyBzaWNoZXJuIiwiZGVzY3JpcHRpb24iOiJVbmQgaGllciBlaW5lIEFwcCBmw7xyIGRpZSBLbGVpbmVuISBXZXIgUGVwcGEgUGlnIHVuZCBpaHJlIEZyZXVuZGUgbWFnLCB3aXJkIGRpZXNlcyBTcGllbCBzaWNoZXIgbGllYmVuIEbDvHIga3VyemUgWmVpdCBnaWJ0IGVzIGRpZSBBcHAgZsO8ciBBbmRyb2lkIHVuZCBpT3MgZ3JhdGlzLiBQZXBwYSBQaWc6IEhhcHB5IE1ycy4gQ2hpY2tlbiBncmF0aXMgc2ljaGVybiBpaHIgc3BhcnQgMyw0OeKCrCBQZXBwYSB1bmQgU2Nob3JzY2ggc3BpZWxlbiBIYXBweSBNcnPigKYiLCJ1cmwiOiJodHRwczovL3d3dy5zcGFyYm90ZS5kZS8zNTc5NTUvcGVwcGEtcGlnLWhhcHB5LW1ycy1jaGlja2VuLWZ1ZXItYW5kcm9pZC11bmQtaW9zLWdyYXRpcy1zaWNoZXJuLyIsInVybFRvSW1hZ2UiOiJodHRwczovL3d3dy5zcGFyYm90ZS5kZS9pbWcvc2NobmFlcHBjaGVuLzIwMjAvMDYvcGlnLTIwMHgxMzUuanBnIiwicHVibGlzaGVkQXQiOiIyMDIwLTA2LTA4VDEzOjQ5OjIxWiIsImNvbnRlbnQiOm51bGx9XSwiX2lkIjoiNWVlMGU0MmMwZWU1YmViNTA5ZTcxMWY3IiwidGl0bGUiOiJ0aGlyZCAgQWxidW0iLCJ1cmxUb0ltYWdlIjoidXJsIiwiZGVzY3JpcHRpb24iOiJ0aGlzIGlzIHRoZSB0aGlyZCBkZXNjcmlwdGlvbiJ9XX0sImlhdCI6MTU5MTgwMzUzOH0._nI9k_FKxA8TYQlH8S7YztigzvOy69yCXLY7Z05yZng",
+										"description": "User 1 ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"User1\",\n    \"surname\" : \"User1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZWRjZjllNjJiMjQwYzc2NGE1NTExNTQiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkMjc2YjM4YTMkMSQxMGU3M2YwMDVmOGRhOTY3ZTYyMDI1MzJlYjg1NWI3ODcwMDBkZGY1IiwiZmF2b3JpdGVzIjpbeyJzb3VyY2UiOnsiaWQiOm51bGwsIm5hbWUiOiJDaG93aG91bmQifSwiX2lkIjoiNWVkZDA5Y2I3NjM4ZDQ3ODNiNTA3NTI1IiwiYXV0aG9yIjoic29jY2VybW9tMTMiLCJ0aXRsZSI6IkNPVklEIDE5IHBpY25pYy0tbmVlZCBzdWdnZXN0aW9ucyEiLCJkZXNjcmlwdGlvbiI6IkkgaGFkIGFuIFwiYWhhIVwiIG1vbWVudCB0aGlzIG1vcm5pbmcgd2hlbiBJIHJlYWxpemVkIHRoYXQgSSB3b3VsZCBub3QgYmUgY29tZm9ydGFibGUgZWF0aW5nIGZpbmdlciBmb29kcyBvZiBhbnkgc29ydCB1bmxlc3MgSSBjb3VsZCB3YXNoIG15IGhhbmRzIHdlbGwgd2l0aCB2ZXJ5IHdhcm0gd2F0ZXIgYW5kIHNvYXAgYmVmb3JlIGVhdGluZywgd2hpY2ggaXMgbm90IHBvc3NpYmxlIGF0IHRoZSBwaWNuaWMgc2l0ZS4gTXkgaGFuZHMganVzdCBkb24ndCBmZeKApiIsInVybCI6Imh0dHBzOi8vd3d3LmNob3dob3VuZC5jb20vcG9zdC9jb3ZpZC0xOS1waWNuaWMtc3VnZ2VzdGlvbnMtMTA5MTk5ND9jb21tZW50SWQ9MTAyNjY2MTkjMTAyNjY2MTkiLCJ1cmxUb0ltYWdlIjoiaHR0cHM6Ly9jaG93aG91bmQxLmNic2lzdGF0aWMuY29tL3Mvb2dfaW1hZ2VfZGVmYXVsdC0wYTMxMzdmMGY2MWMwMGNjMGYwNDE5NGFhYjJmMWQ1Zi5qcGciLCJwdWJsaXNoZWRBdCI6IjIwMjAtMDYtMDdUMTA6NTA6MTZaIiwiY29udGVudCI6IkEgY291cGxlIHdlIGtub3cgdHJlYXRlZCB1cyB0byBhIGxvdmVseSBvdXRpbmcgcHJlLUNPVklEIDE5LiBXZSBoYWQgcGxhbm5lZCB0byBoYXZlIHRoZW0gb3ZlciBmb3IgYSBuaWNlIGhvbWUtY29va2VkIGRpbm5lciBhcyBhIHdheSB0byBleHByZXNzIG91ciBncmF0aXR1ZGUuIEJ1dCBub3csIHNpbmNlIHdlIGFyZSBhbGwgb3ZlciA2NSBhbmQgdGjigKYgWys1MDcgY2hhcnNdIn1dLCJfX3YiOjAsImFsYnVtcyI6W119LCJpYXQiOjE1OTE2MjM5ODN9.-8tWT-sdyhrP4Kd5CVdGdbcikvff4Ic0_9WVvXZz1mw",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "delete users ",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZWQ3YTJmNGY0ZTA2NDMxMTYyMzk5MjYiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkODdlMTk1NzUkMSRkMDc0NzJjNzgwOWFhM2VkOThkN2MyZmRjMzlhMDM0OWRjZmE1MzFmIiwiX192IjowLCJmYXZvcml0ZXMiOlt7InNvdXJjZSI6eyJpZCI6bnVsbCwibmFtZSI6IkNob3dob3VuZCJ9LCJhdXRob3IiOiJzb2NjZXJtb20xMyIsInRpdGxlIjoiQ09WSUQgMTkgcGljbmljLS1uZWVkIHN1Z2dlc3Rpb25zISIsImRlc2NyaXB0aW9uIjoiSSBoYWQgYW4gXCJhaGEhXCIgbW9tZW50IHRoaXMgbW9ybmluZyB3aGVuIEkgcmVhbGl6ZWQgdGhhdCBJIHdvdWxkIG5vdCBiZSBjb21mb3J0YWJsZSBlYXRpbmcgZmluZ2VyIGZvb2RzIG9mIGFueSBzb3J0IHVubGVzcyBJIGNvdWxkIHdhc2ggbXkgaGFuZHMgd2VsbCB3aXRoIHZlcnkgd2FybSB3YXRlciBhbmQgc29hcCBiZWZvcmUgZWF0aW5nLCB3aGljaCBpcyBub3QgcG9zc2libGUgYXQgdGhlIHBpY25pYyBzaXRlLiBNeSBoYW5kcyBqdXN0IGRvbid0IGZl4oCmIiwidXJsIjoiaHR0cHM6Ly93d3cuY2hvd2hvdW5kLmNvbS9wb3N0L2NvdmlkLTE5LXBpY25pYy1zdWdnZXN0aW9ucy0xMDkxOTk0P2NvbW1lbnRJZD0xMDI2NjYxOSMxMDI2NjYxOSIsInVybFRvSW1hZ2UiOiJodHRwczovL2Nob3dob3VuZDEuY2JzaXN0YXRpYy5jb20vcy9vZ19pbWFnZV9kZWZhdWx0LTBhMzEzN2YwZjYxYzAwY2MwZjA0MTk0YWFiMmYxZDVmLmpwZyIsInB1Ymxpc2hlZEF0IjoiMjAyMC0wNi0wN1QxMDo1MDoxNloiLCJjb250ZW50IjoiQSBjb3VwbGUgd2Uga25vdyB0cmVhdGVkIHVzIHRvIGEgbG92ZWx5IG91dGluZyBwcmUtQ09WSUQgMTkuIFdlIGhhZCBwbGFubmVkIHRvIGhhdmUgdGhlbSBvdmVyIGZvciBhIG5pY2UgaG9tZS1jb29rZWQgZGlubmVyIGFzIGEgd2F5IHRvIGV4cHJlc3Mgb3VyIGdyYXRpdHVkZS4gQnV0IG5vdywgc2luY2Ugd2UgYXJlIGFsbCBvdmVyIDY1IGFuZCB0aOKApiBbKzUwNyBjaGFyc10ifSx7InNvdXJjZSI6eyJpZCI6bnVsbCwibmFtZSI6Ikhvd3N3ZWV0ZWF0cy5jb20ifSwiX2lkIjoiNWVkY2YwY2VkODlhNjc3NTMxNjMxMDhlIiwiYXV0aG9yIjoiSmVzc2ljYSIsInRpdGxlIjoiV2hhdCBUbyBFYXQgVGhpcyBXZWVrOiA2LzcvMjAuIiwiZGVzY3JpcHRpb24iOiJPb29vaCBldmVyeXRoaW5nIG9uIHRoZSBtZW51IHRoaXMgd2VlayBpcyBzbyBnb29kISBUaGlzIG1pZ2h0IGJlIG15IGZhdm9yaXRlIHdlZWsgb2YgbWVhbHMgeWV0LiBMZXTigJlzIGtpY2sgdGhpbmdzIG9mZiB3aXRoIGEgbWVhdGxlc3MgbWVhbHM6IHRoZXNlIGJhamEgZ3JhaW4gYm93bHMhIFlvdSBjYW4gYWx3YXlzIGFkZCBjaGlja2VuIG9yIGJlYW5zIGlmIHlvdeKAmWQgbGlrZS4gVGhpcyBncmlsbGVkIGNoaWNrZW4gc3RyYXdiZXJyeSBzYWxhZCBpcyB1cOKApiIsInVybCI6Imh0dHBzOi8vd3d3Lmhvd3N3ZWV0ZWF0cy5jb20vMjAyMC8wNi93aGF0LXRvLWVhdC10aGlzLXdlZWstNi03LTIwLyIsInVybFRvSW1hZ2UiOiJodHRwczovL3d3dy5ob3dzd2VldGVhdHMuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDIwLzA2L3N0cmF3YmVycnktcG9wcHlzZWVkLXNhbGFkLUktaG93c3dlZXRlYXRzLmNvbS04LTEuanBnIiwicHVibGlzaGVkQXQiOiIyMDIwLTA2LTA3VDEwOjQ1OjQ2WiIsImNvbnRlbnQiOiJieSBKZXNzaWNhIG9uIEp1bmUgNywgMjAyMCAwMFxyXG5Pb29vaCBldmVyeXRoaW5nIG9uIHRoZSBtZW51IHRoaXMgd2VlayBpcyBzbyBnb29kIVxyXG5UaGlzIG1pZ2h0IGJlIG15IGZhdm9yaXRlIHdlZWsgb2YgbWVhbHMgeWV0LlxyXG5MZXTigJlzIGtpY2sgdGhpbmdzIG9mZiB3aXRoIGEgbWVhdGxlc3MgbWVhbHM6IHRoZXNlIGJhamEgZ3JhaW4gYm93bHMhIFnigKYgWys5NTggY2hhcnNdIn1dfSwiaWF0IjoxNTkxNTM5NzUxfQ.eIKK4ifVWiFnw3TLPCjDWDUmf1wfZl1HHtXLw-xUCxQ",
+										"description": "User1 Login",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3001/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										""
+									]
+								},
+								"description": "add the user token in your header"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get all user information (test)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\" : \"billal\",\n\t\"surname\" : \"cherif\",\n\t\"email\" : \"billal.cherif@epitech.eu\",\n\t\"password\" : \"Password1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get user information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZWRjZjllNjJiMjQwYzc2NGE1NTExNTQiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkMjc2YjM4YTMkMSQxMGU3M2YwMDVmOGRhOTY3ZTYyMDI1MzJlYjg1NWI3ODcwMDBkZGY1IiwiZmF2b3JpdGVzIjpbeyJzb3VyY2UiOnsiaWQiOm51bGwsIm5hbWUiOiJDaG93aG91bmQifSwiX2lkIjoiNWVkZDA5Y2I3NjM4ZDQ3ODNiNTA3NTI1IiwiYXV0aG9yIjoic29jY2VybW9tMTMiLCJ0aXRsZSI6IkNPVklEIDE5IHBpY25pYy0tbmVlZCBzdWdnZXN0aW9ucyEiLCJkZXNjcmlwdGlvbiI6IkkgaGFkIGFuIFwiYWhhIVwiIG1vbWVudCB0aGlzIG1vcm5pbmcgd2hlbiBJIHJlYWxpemVkIHRoYXQgSSB3b3VsZCBub3QgYmUgY29tZm9ydGFibGUgZWF0aW5nIGZpbmdlciBmb29kcyBvZiBhbnkgc29ydCB1bmxlc3MgSSBjb3VsZCB3YXNoIG15IGhhbmRzIHdlbGwgd2l0aCB2ZXJ5IHdhcm0gd2F0ZXIgYW5kIHNvYXAgYmVmb3JlIGVhdGluZywgd2hpY2ggaXMgbm90IHBvc3NpYmxlIGF0IHRoZSBwaWNuaWMgc2l0ZS4gTXkgaGFuZHMganVzdCBkb24ndCBmZeKApiIsInVybCI6Imh0dHBzOi8vd3d3LmNob3dob3VuZC5jb20vcG9zdC9jb3ZpZC0xOS1waWNuaWMtc3VnZ2VzdGlvbnMtMTA5MTk5ND9jb21tZW50SWQ9MTAyNjY2MTkjMTAyNjY2MTkiLCJ1cmxUb0ltYWdlIjoiaHR0cHM6Ly9jaG93aG91bmQxLmNic2lzdGF0aWMuY29tL3Mvb2dfaW1hZ2VfZGVmYXVsdC0wYTMxMzdmMGY2MWMwMGNjMGYwNDE5NGFhYjJmMWQ1Zi5qcGciLCJwdWJsaXNoZWRBdCI6IjIwMjAtMDYtMDdUMTA6NTA6MTZaIiwiY29udGVudCI6IkEgY291cGxlIHdlIGtub3cgdHJlYXRlZCB1cyB0byBhIGxvdmVseSBvdXRpbmcgcHJlLUNPVklEIDE5LiBXZSBoYWQgcGxhbm5lZCB0byBoYXZlIHRoZW0gb3ZlciBmb3IgYSBuaWNlIGhvbWUtY29va2VkIGRpbm5lciBhcyBhIHdheSB0byBleHByZXNzIG91ciBncmF0aXR1ZGUuIEJ1dCBub3csIHNpbmNlIHdlIGFyZSBhbGwgb3ZlciA2NSBhbmQgdGjigKYgWys1MDcgY2hhcnNdIn1dLCJfX3YiOjAsImFsYnVtcyI6W3siYWxidW0iOlt7InNvdXJjZSI6eyJpZCI6bnVsbCwibmFtZSI6Ikhvd3N3ZWV0ZWF0cy5jb20ifSwiX2lkIjoiNWVkZTUyMzI5NDU5NTA4ZGQ3MWI0ZGRiIiwiYXV0aG9yIjoiSmVzc2ljYSIsInRpdGxlIjoiV2hhdCBUbyBFYXQgVGhpcyBXZWVrOiA2LzcvMjAuIiwiZGVzY3JpcHRpb24iOiJPb29vaCBldmVyeXRoaW5nIG9uIHRoZSBtZW51IHRoaXMgd2VlayBpcyBzbyBnb29kISBUaGlzIG1pZ2h0IGJlIG15IGZhdm9yaXRlIHdlZWsgb2YgbWVhbHMgeWV0LiBMZXTigJlzIGtpY2sgdGhpbmdzIG9mZiB3aXRoIGEgbWVhdGxlc3MgbWVhbHM6IHRoZXNlIGJhamEgZ3JhaW4gYm93bHMhIFlvdSBjYW4gYWx3YXlzIGFkZCBjaGlja2VuIG9yIGJlYW5zIGlmIHlvdeKAmWQgbGlrZS4gVGhpcyBncmlsbGVkIGNoaWNrZW4gc3RyYXdiZXJyeSBzYWxhZCBpcyB1cOKApiIsInVybCI6Imh0dHBzOi8vd3d3Lmhvd3N3ZWV0ZWF0cy5jb20vMjAyMC8wNi93aGF0LXRvLWVhdC10aGlzLXdlZWstNi03LTIwLyIsInVybFRvSW1hZ2UiOiJodHRwczovL3d3dy5ob3dzd2VldGVhdHMuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDIwLzA2L3N0cmF3YmVycnktcG9wcHlzZWVkLXNhbGFkLUktaG93c3dlZXRlYXRzLmNvbS04LTEuanBnIiwicHVibGlzaGVkQXQiOiIyMDIwLTA2LTA3VDEwOjQ1OjQ2WiIsImNvbnRlbnQiOiJieSBKZXNzaWNhIG9uIEp1bmUgNywgMjAyMCAwMFxyXG5Pb29vaCBldmVyeXRoaW5nIG9uIHRoZSBtZW51IHRoaXMgd2VlayBpcyBzbyBnb29kIVxyXG5UaGlzIG1pZ2h0IGJlIG15IGZhdm9yaXRlIHdlZWsgb2YgbWVhbHMgeWV0LlxyXG5MZXTigJlzIGtpY2sgdGhpbmdzIG9mZiB3aXRoIGEgbWVhdGxlc3MgbWVhbHM6IHRoZXNlIGJhamEgZ3JhaW4gYm93bHMhIFnigKYgWys5NTggY2hhcnNdIn1dLCJfaWQiOiI1ZWRlNDhiZjJjMDc4YThjNWJlNDU4MjkiLCJ0aXRsZSI6IkZpcnN0IEFsYnVtIiwidXJsVG9JbWFnZSI6InVybCIsImRlc2NyaXB0aW9uIjoidGhpcyBpcyB0aGUgZmlyc3QgZGVzY3JpcHRpb24ifSx7ImFsYnVtIjpbeyJzb3VyY2UiOnsiaWQiOm51bGwsIm5hbWUiOiJTcGFyYm90ZS5kZSJ9LCJfaWQiOiI1ZWUwZTQ2MTBlZTViZWI1MDllNzExZjgiLCJhdXRob3IiOiJzdGVmYW4iLCJ0aXRsZSI6IlBlcHBhIFBpZzogSGFwcHkgTXJzLiBDaGlja2VuIGbDvHIgQW5kcm9pZCB1bmQgaU9zIGdyYXRpcyBzaWNoZXJuIiwiZGVzY3JpcHRpb24iOiJVbmQgaGllciBlaW5lIEFwcCBmw7xyIGRpZSBLbGVpbmVuISBXZXIgUGVwcGEgUGlnIHVuZCBpaHJlIEZyZXVuZGUgbWFnLCB3aXJkIGRpZXNlcyBTcGllbCBzaWNoZXIgbGllYmVuIEbDvHIga3VyemUgWmVpdCBnaWJ0IGVzIGRpZSBBcHAgZsO8ciBBbmRyb2lkIHVuZCBpT3MgZ3JhdGlzLiBQZXBwYSBQaWc6IEhhcHB5IE1ycy4gQ2hpY2tlbiBncmF0aXMgc2ljaGVybiBpaHIgc3BhcnQgMyw0OeKCrCBQZXBwYSB1bmQgU2Nob3JzY2ggc3BpZWxlbiBIYXBweSBNcnPigKYiLCJ1cmwiOiJodHRwczovL3d3dy5zcGFyYm90ZS5kZS8zNTc5NTUvcGVwcGEtcGlnLWhhcHB5LW1ycy1jaGlja2VuLWZ1ZXItYW5kcm9pZC11bmQtaW9zLWdyYXRpcy1zaWNoZXJuLyIsInVybFRvSW1hZ2UiOiJodHRwczovL3d3dy5zcGFyYm90ZS5kZS9pbWcvc2NobmFlcHBjaGVuLzIwMjAvMDYvcGlnLTIwMHgxMzUuanBnIiwicHVibGlzaGVkQXQiOiIyMDIwLTA2LTA4VDEzOjQ5OjIxWiIsImNvbnRlbnQiOm51bGx9XSwiX2lkIjoiNWVlMGU0MmMwZWU1YmViNTA5ZTcxMWY3IiwidGl0bGUiOiJ0aGlyZCAgQWxidW0iLCJ1cmxUb0ltYWdlIjoidXJsIiwiZGVzY3JpcHRpb24iOiJ0aGlzIGlzIHRoZSB0aGlyZCBkZXNjcmlwdGlvbiJ9XX0sImlhdCI6MTU5MTgwMzUzOH0._nI9k_FKxA8TYQlH8S7YztigzvOy69yCXLY7Z05yZng",
+										"description": "User1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/users/info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"info"
+									]
+								},
+								"description": "add user token in your header"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "twitch",
+			"item": [
+				{
+					"name": "Get Top Games",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Client-ID",
+								"value": "eoz131t7qb2vongoc8gbng6bklpnzi",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/videoList/topShow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"videoList",
+								"topShow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/twitch/GetAUTH",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"twitch",
+								"GetAUTH"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Famous stream by game",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/twitch/Streams/:gameId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"twitch",
+								"Streams",
+								":gameId"
+							],
+							"variable": [
+								{
+									"key": "gameId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Follow a channel ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZjA1YmJhMzc2ZTgzMTEwYzhjY2YyNjgiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkYzIyZTVhMGMkMSRiZGQ1ODZlOGUwNTIxNjcwYjhkOWFmYWUwNzVkNDQxN2I4ODhlNmVjIiwibXlWaWRlb3MiOltdLCJfX3YiOjB9LCJpYXQiOjE1OTQyMTEyNDR9._XlvDJd61Z16t3XbeeiCjy7ofVbE1aC7tzgKJMjobdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"lestream\",\n    \"userId\": \"147337432\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/twitch/follow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"twitch",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all my Fav channels information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZjA1YmJhMzc2ZTgzMTEwYzhjY2YyNjgiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkYzIyZTVhMGMkMSRiZGQ1ODZlOGUwNTIxNjcwYjhkOWFmYWUwNzVkNDQxN2I4ODhlNmVjIiwibXlWaWRlb3MiOltdLCJfX3YiOjB9LCJpYXQiOjE1OTQyMTEyNDR9._XlvDJd61Z16t3XbeeiCjy7ofVbE1aC7tzgKJMjobdA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/twitch/favStreams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"twitch",
+								"favStreams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow a chanel ",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZjA1YmJhMzc2ZTgzMTEwYzhjY2YyNjgiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkYzIyZTVhMGMkMSRiZGQ1ODZlOGUwNTIxNjcwYjhkOWFmYWUwNzVkNDQxN2I4ODhlNmVjIiwibXlWaWRlb3MiOltdLCJfX3YiOjB9LCJpYXQiOjE1OTQyMTEyNDR9._XlvDJd61Z16t3XbeeiCjy7ofVbE1aC7tzgKJMjobdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"lestream\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/twitch/remove",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"twitch",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove Show from my watchlist",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZjA1YmJhMzc2ZTgzMTEwYzhjY2YyNjgiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkYzIyZTVhMGMkMSRiZGQ1ODZlOGUwNTIxNjcwYjhkOWFmYWUwNzVkNDQxN2I4ODhlNmVjIiwibXlWaWRlb3MiOltdLCJfX3YiOjB9LCJpYXQiOjE1OTQyMTEyNDR9._XlvDJd61Z16t3XbeeiCjy7ofVbE1aC7tzgKJMjobdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"The Flash\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/videoList/remove",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"videoList",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "upload file ",
+			"item": [
+				{
+					"name": "upload a file ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZjA1YmJhMzc2ZTgzMTEwYzhjY2YyNjgiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkYzIyZTVhMGMkMSRiZGQ1ODZlOGUwNTIxNjcwYjhkOWFmYWUwNzVkNDQxN2I4ODhlNmVjIiwibXlWaWRlb3MiOltdLCJfX3YiOjB9LCJpYXQiOjE1OTQyMTEyNDR9._XlvDJd61Z16t3XbeeiCjy7ofVbE1aC7tzgKJMjobdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/billal/Downloads/wallpaper.png"
+								},
+								{
+									"key": "title",
+									"value": "wallpaper",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "descrpition",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/upload/file",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"upload",
+								"file"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "WatchList",
+			"item": [
+				{
+					"name": "Get Top Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/videoList/topShow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"videoList",
+								"topShow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add to my watchList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZjA1YmJhMzc2ZTgzMTEwYzhjY2YyNjgiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkYzIyZTVhMGMkMSRiZGQ1ODZlOGUwNTIxNjcwYjhkOWFmYWUwNzVkNDQxN2I4ODhlNmVjIiwibXlWaWRlb3MiOltdLCJfX3YiOjB9LCJpYXQiOjE1OTQyMTEyNDR9._XlvDJd61Z16t3XbeeiCjy7ofVbE1aC7tzgKJMjobdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n            \"id\": 35624,\n            \"name\": \"The Flash\",\n            \"permalink\": \"the-flash\",\n            \"start_date\": \"2014-10-07\",\n            \"end_date\": null,\n            \"country\": \"US\",\n            \"network\": \"The CW\",\n            \"status\": \"Running\",\n            \"image_thumbnail_path\": \"https://static.episodate.com/images/tv-show/thumbnail/35624.jpg\"\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/videoList/addToWatchList",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"videoList",
+								"addToWatchList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get my shows details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5kVXNlciI6eyJfaWQiOiI1ZjA1YmJhMzc2ZTgzMTEwYzhjY2YyNjgiLCJuYW1lIjoiVXNlcjEiLCJzdXJuYW1lIjoiVXNlcjEiLCJlbWFpbCI6InVzZXIxQGVwaXRlY2guZXUiLCJwYXNzd29yZCI6InNoYTEkYzIyZTVhMGMkMSRiZGQ1ODZlOGUwNTIxNjcwYjhkOWFmYWUwNzVkNDQxN2I4ODhlNmVjIiwibXlWaWRlb3MiOltdLCJfX3YiOjB9LCJpYXQiOjE1OTQyMTEyNDR9._XlvDJd61Z16t3XbeeiCjy7ofVbE1aC7tzgKJMjobdA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/videoList/details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"videoList",
+								"details"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
