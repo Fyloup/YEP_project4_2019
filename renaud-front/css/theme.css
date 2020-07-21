@@ -1,0 +1,206 @@
+  /* The different themes */
+  .theme-light {
+    --color-primary: #D4D7DD;
+    --color-secondary: #FFFFFF;
+    --color-accent: #C4302B;
+    --font-color: #111;
+  }
+
+  .theme-dark {
+    --color-primary: #2F3136;/*#17ed90;*/
+    --color-secondary: #36393f;
+    --color-accent: #C4302B;
+    --font-color: #b9bbbe;
+  }
+
+  .color-selector {
+    height: 200px;
+    width: 200px;
+    border: 20px solid;
+    border-radius: 90px;
+    box-sizing: border-box;
+    background: var(--color-secondary);
+    margin: 20px;
+    color: var(--font-color);
+    text-align: center;
+    line-height: 160px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: bold;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+  }
+
+  .background-win {
+    background-color: var(--color-primary);
+    height: 600px;
+    width: 600px;
+    border-radius: 75px;
+
+    margin: auto;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .exit-btn {
+    display: inline-flex;
+    height: 34px;
+    width: 68px;
+    bottom: 5%;
+    right: 5%;
+    border: 2px solid var(--color-secondary);
+    border-radius: 34px;
+    margin: 20px 20px 20px 20px;
+    background-color: var(--color-accent);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  a {
+    color: var(--font-color);
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: bold;
+  }
+
+
+
+
+/* SCROLLBAR STUFF */
+
+  .scroll-box {
+    width: 90%;
+    height: 90%;
+    overflow-y: scroll;
+    margin: 30 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .scroll-box::-webkit-scrollbar {
+    width: .4em;
+  }
+  .scroll-box::-webkit-scrollbar,
+  .scroll-box::-webkit-scrollbar-thumb {
+    overflow:visible;
+    border-radius: 4px;
+  }
+  .scroll-box::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.2);
+  }
+
+  .cover-bar {
+    position: absolute;
+    background: var(--color-primary);
+    height: 95%;
+    top: 2%;
+    right: 5%;
+    width: .4em;
+    transition: all .5s;
+    opacity: 1;
+  }
+
+  .background-win:hover .cover-bar {
+    opacity: 0;
+   transition: all .5s;
+ }
+
+ /* END OF SCROLLBAR STUFF */
+
+
+  /* THEME SELECTOR */
+
+  #theme-selector {
+    position: fixed;
+    bottom: 40px;
+    left: 95%;
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    z-index: 3;
+    text-align: center;
+    overflow: hidden;
+    line-height: 65px;
+    font-size: 1.5em;
+    color: var(--font-color);
+    -moz-box-shadow: 0px 3px 9px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0px 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0px 3px 9px rgba(0,0,0,.5);
+    border-radius: 50px;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+
+  #theme-selector i {
+    line-height: 60px;
+    margin-right: auto !important;
+  }
+
+  #theme-selector:hover {
+    cursor: pointer;
+  }
+
+  .dark,
+  .light,
+  .colors {
+    width: 50px;
+    height: 50px;
+    color: var(--font-color);
+    border-radius: 50px;
+    z-index: 2;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.5em;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -webkit-box-shadow: 0px 3px 9px rgba(0,0,0,.2);
+    box-shadow: 0px 3px 9px rgba(0,0,0,.2);
+    -webkit-transition: transform  .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+  }
+
+  .dark:hover,
+  .light:hover,
+  .colors:hover {
+    cursor: pointer;
+  }
+
+  .dark i,
+  .light i,
+  .colors i {
+    display: block;
+    line-height: 50px;
+    font-size: x-large !important;
+    margin-right: auto !important;
+  }
+
+  .dark {
+    background: var(--color-secondary);
+  }
+
+  .light {
+    background: var(--color-primary);
+  }
+
+  .colors {
+    background: var(--color-accent);
+  }
+
+  /* END OF THEME SELECTOR */

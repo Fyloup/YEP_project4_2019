@@ -1,0 +1,104 @@
+/* div#main {
+    overflow-y: auto;
+    display: block;
+} */
+
+h2 {
+    font-size: 22px;
+    margin: 0;
+    padding-left: 30px;
+}
+
+p.twitch_title {
+    color: black;
+}
+
+div#twitch_home_page {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 1500px;
+}
+
+div.twitch_home_page_stream {
+    flex: 0 0 auto;
+    padding-left: 25px;
+}
+
+div.twitch_home_page_stream p {
+    font-size: 20px;
+}
+
+div#twitch_results_streams {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 1500px;
+    margin-left: 30px;
+}
+
+div.twitch_stream {
+    flex: 0 0 auto;
+    padding-left: 25px;
+}
+
+div.twitch_stream p {
+    font-size: 20px;
+}
+
+div#twitch_results_games {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 1500px;
+    margin-left: 30px;
+}
+
+div.twitch_game {
+    flex: 0 0 auto;
+    padding-left: 25px;
+}
+
+div.twitch_game p {
+    font-size: 20px;
+}
+
+div#twitch_results_channels {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 1500px;
+    margin-left: 30px;
+}
+
+div.twitch_channel {
+    flex: 0 0 auto;
+    padding-left: 25px;
+}
+
+div.twitch_channel p {
+    font-size: 20px;
+}
+
+div.twitch_game_stream {
+    flex: 0 0 auto;
+    padding-left: 25px;
+}
+
+div.twitch_game_stream p {
+    font-size: 20px;
+}
+
+::-webkit-scrollbar {
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(120, 120, 120);
+}
+

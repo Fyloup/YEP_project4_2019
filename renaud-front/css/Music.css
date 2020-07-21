@@ -1,0 +1,166 @@
+/* container for music player */
+
+#container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 50px 0 150px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+.select {
+    width: 170px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    background-color: transparent;
+    border: 3px solid var(--color-accent);
+    border-radius: 34px;
+    color: var(--color-accent);
+    transition: .3s;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .select:hover,
+  #dir_button_music:hover,
+  #file_button_music:hover {
+    animation: pulse 1s infinite;
+    transition: .3s;
+  }
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    70% {
+      transform: scale(.9);
+    }
+      100% {
+      transform: scale(1);
+    }
+  }
+
+  #icons {
+    width: 100%;
+    height: 100%;
+    background: var(--color-accent);
+    position: absolute;
+    left: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+  }
+
+
+
+/* Slide control btn */
+
+.control {
+    display: inline-flex;
+    height: 34px;
+    width: 68px;
+    border: 2px solid var(--color-accent);
+    border-radius: 34px;
+    margin: 20px 20px 20px 20px;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  a {
+    color: var(--font-color);
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
+  #skip_button_music a,
+  #stop_button_music a {
+    position: relative;
+    left: 0;
+    transition: all .35s ease-Out;
+  }
+
+  #slide-icons {
+    width: 100%;
+    height: 100%;
+    background: var(--color-accent);
+    left: -200px;
+    position: absolute;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .35s ease-Out;
+    bottom: 0;
+  }
+
+  #skip_button_music img,
+  #stop_button_music img,
+  #dir_button_music img {
+    width: 20px;
+    height: auto;
+  }
+
+  #skip_button_music:hover #slide-icons,
+  #stop_button_music:hover #slide-icons {
+    left: 0;
+  }
+
+  #skip_button_music:hover a,
+  #stop_button_music:hover a {
+    left: 150px;
+  }
+
+  @media screen and (min-width:1000px) {
+    h1 {
+      font-size: 2.2em;
+    }
+    #container {
+      width: 50%;
+    }
+  }
+
+  /* --Repeat button-- */
+
+  /* Hide default HTML checkbox */
+  .control input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  #repeat {
+    transform: rotate(0);
+  }
+
+  .check-with-label:checked + .label-for-check div:not(:checked) {
+      box-shadow: 0 0 20px 0 var(--color-secondary) inset, 0 0 20px 2px var(--color-accent);
+      border-radius: 34px;
+      transform: rotate(180deg);
+      -webkit-transition: all .15s ease-in-out;
+      transition: all .15s ease-in-out;
+  }
+
+  #repeat:hover {
+    box-shadow: 0 0 20px 0 var(--color-secondary) inset, 0 0 20px 2px var(--color-accent);
+    border-radius: 34px;
+    border: 3px solid var(--color-accent);
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+  }
+
+  /* --End of Repeat button-- */

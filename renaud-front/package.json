@@ -1,0 +1,29 @@
+{
+  "name": "epikodi",
+  "productName": "EpiKodi",
+  "version": "1.0.0",
+  "description": "Kodi clone",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=media/AppIcon.png --prune=true --out=release-builds",
+    "package-win": "electron-packager . epikodi --overwrite --asar=true --platform=win32 --arch=ia32 --icon=media/AppIcon.png --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"EpiKodi\"",
+    "package-linux": "electron-packager . epikodi --overwrite --asar=true --platform=linux --arch=x64 --icon=media/AppIcon.png --prune=true --out=release-builds"
+  },
+  "author": "Grégory",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^9.0.4",
+    "electron-packager": "^14.2.1"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "electron-store": "^5.2.0",
+    "jquery": "^3.5.1",
+    "material-community-components": "^6.0.1",
+    "musicmetadata": "^2.0.5",
+    "node-geocoder": "^3.27.0",
+    "request": "^2.88.2",
+    "smart-webcomponents": "^7.6.2"
+  }
+}

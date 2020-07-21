@@ -1,0 +1,66 @@
+<h1> ⚡ Weather ⚡</h1>
+<div id="weather-widget">
+    <div id="weather-topbar">
+        <h3 id="location"></h3>
+        <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+    </div>
+    <div class="temperatures">
+        <p>Current temperature: </p>
+    </div>
+    <p id="weather"></p>
+    <div class="temperatures">
+        <p id="min-temp"></p>
+        <p id="max-temp"></p>
+        <h5 id="wind"></h5>
+    </div>
+<div id="description">
+    <h3 id="desc"></h3>
+    <img id="meteo-image" src="" width="85px" height="85px"/>
+</div>
+</div>
+<script type="text/javascript">
+    function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+
+    if(h == 0){
+        h = 12;
+    }
+
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+
+    var time = h + ":" + m + ":" + s;
+    document.getElementById("MyClockDisplay").innerText = time;
+    document.getElementById("MyClockDisplay").textContent = time;
+
+    setTimeout(showTime, 1000);
+
+}
+showTime();
+</script>
+<script>
+    var time = document.getElementById("MyClockDisplay").innerText
+    var hour = time.split(":")
+    var widget = document.getElementById("weather-widget")
+
+    if ((hour[0] < 11) && (hour[0] >= 7)) {
+        widget.style.backgroundImage = "url('../media/morning.jpg')"
+    } else if ((hour[0] >= 11) && (hour[0] < 18)) {
+        widget.style.backgroundImage = "url('../media/oklm.jpg')"
+    } else if ((hour[0] >= 18) && (hour[0] < 20)) {
+        widget.style.backgroundImage = "url('../media/sunset.jpg')"
+        widget.style.color = "white"
+    } else if ((hour[0] >= 20) && (hour[0] <= 22)) {
+        widget.style.backgroundImage = "url('../media/night.jpg')"
+        widget.style.color = "white"
+    } else {
+        widget.style.backgroundImage = "url('../media/darknight.jpg')"
+        widget.style.color = "white"
+    }
+</script>
+<script type="text/javascript" src='../javascript/Weather.js'></script>

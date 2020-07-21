@@ -1,0 +1,158 @@
+
+#open-video {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--color-primary);
+}
+
+#open-video p {
+  position: relative;
+  transition: all .35s ease-Out;
+  color: var(--color-accent);
+}
+
+#slide {
+  width: 100%;
+  height: 100%;
+  left: -400px;
+  background: var(--color-accent);
+  position: absolute;
+  transition: all .35s ease-Out;
+  bottom: 0;
+}
+
+#open-video:hover #slide {
+  left: 0;
+}
+
+#open-video:hover p {
+  color: var(--color-primary);
+}
+
+#video-player {
+  width: 100%;
+  height: 75%;
+  background-color: black;
+}
+
+/* First container */
+#music-flex {
+  margin-right: auto;
+  flex: 1;
+  min-width: 100%;
+  max-height: 25%;
+  display: flex;
+}
+
+/* Second container */
+#music-list {
+  display: flex;
+  margin-right: auto;
+  color: black;
+  background-color: white;
+  flex-direction: column;
+  width: 70%;
+}
+
+#videos-list {
+  overflow: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+#videos-list li {
+  display: block;
+  cursor: pointer;
+  list-style-position: inside;
+  padding: 12px 16px 12px 12px;
+}
+
+#videos-list li:nth-child(2n) {
+  background-color: lightgray;
+}
+
+#videos-list li:nth-child(2n+1) {
+  background-color: white;
+}
+
+#videos-list li:hover {
+  background-color: var(--color-accent);
+}
+
+#folder-list{
+  overflow: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+#folder-list li {
+  display: block;
+  cursor: pointer;
+  list-style-position: inside;
+  padding: 12px 16px 12px 12px;
+}
+/* PLAYBAR */
+
+#play-bar {
+  background-color: var(--color-primary);
+  color:  var(--font-color);
+  display: flex;
+  align-self: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 100px;
+  max-height: 100px;
+}
+
+#play-bar i{
+  margin-left: 20px;
+  margin-right: 20px;
+  color:  var(--font-color);
+}
+
+#now_playing {
+  padding-right: 20px;
+  font-size: 20px;
+  max-width: 400px;
+  overflow: hidden;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@keyframes defilement-rtl {
+  0% {
+    transform: translate3d(0,0,0);      /* position initiale à droite */
+  }
+  100% {
+    transform: translate3d(-100%,0,0);  /* position finale à gauche */
+  }
+}
+#now_playing > :first-child {
+  display: inline-block;                /* modèle de boîte en ligne */
+  padding-right: 2em;                   /* un peu d'espace pour la transition */
+  padding-left: 100%;                   /* placement à droite du conteneur */
+  white-space: nowrap;                  /* pas de passage à la ligne */
+  animation: defilement-rtl 15s infinite linear;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+
+#settings {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  background-color: #2F3136;
+}
