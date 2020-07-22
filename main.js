@@ -3,6 +3,8 @@ const {app, BrowserWindow, ipcMain, dialog} = require('electron')
 const path = require('path')
 const fs = require("fs")
 let musicMetadata = require('musicmetadata');
+let request = require('request');
+let NodeGeocoder = require('node-geocoder');
 
 process.env.GOOGLE_API_KEY = "AIzaSyDWQ3-ucLTK4371yRDayjK9Hh4h5Nk0WO4"
 
@@ -45,10 +47,18 @@ let messageRef = {
       mainWindow.webContents.send("fromMain", "dirFiles", {path: dir.filePaths[0], files: files})
     });
   },
+  "ReadMusicDir": () => {
+    dialog.showOpenDialog({ properties: ['openDirectory'], title: "Select the directory containing your music files" }).then(function(dir) {
+      let files = fs.readdirSync(dir.filePaths[0]);
+
+      mainWindow.webContents.send("fromMain", "dirMusicFiles", {path: dir.filePaths[0], files: files})
+    });
+  },
   "ReadFile": (path) => {
     if (!path) {
       dialog.showOpenDialog({ properties: ['openFile'], title: "Select a music file", filters: [{ extensions: ['mp3', 'ogg']},]}).then(function(file) {
         musicMetadata(fs.createReadStream(file.filePaths[0]), (err, metadata) => {
+          console.log("reading file")
           mainWindow.webContents.send("fromMain", "file", {path: file.filePaths[0], file: metadata})
         })
       })
@@ -71,6 +81,18 @@ let messageRef = {
   },
   "Log": (...args) => {
     console.log("log: ", args)
+  },
+  "DoRequest": (url) => {
+    console.log(url)
+    try {
+      request(url, function(error, info) {
+        console.log("error: ", error)
+        //console.log(info)
+        mainWindow.webContents.send("fromMain", "answer", {info: info.body})
+      }) 
+    } catch (error) {
+      console.log("try error: ", error)
+    }
   }
 }
 
