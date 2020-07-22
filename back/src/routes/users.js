@@ -34,10 +34,7 @@ router.patch('/', verifyToken, async (req, res) => {
         const updateProfile = await User.updateOne(
             {_id: _id},
             {$set: {
-                email: req.body.email,
-                name: req.body.name,
-                surname: req.body.surname,
-                password: passwordHash.generate(req.body.password)
+                email: req.body.email
             }}
         );
         res.json(updateProfile);
