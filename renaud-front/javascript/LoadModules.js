@@ -1,57 +1,88 @@
-window.$ = window.jQuery = require('jquery')
-
-const { dialog } = require('electron').remote;
-const main = document.getElementById("main")
-const remote = require('electron').remote
-let w = remote.getCurrentWindow()
-
+let main;
 // GET THE BUTTON IN THE NAVBAR VIA THE ID
-const create_btn = document.getElementById("Videos-Creation")
-const music_btn = document.getElementById("Music")
-const weather_btn = document.getElementById("Weather")
-const twitch_btn = document.getElementById("Twitch")
-//const movies_btn = document.getElementById("Movies")
-//const videos_btn = document.getElementById("Videos")
-const power_btn = document.getElementById("power_button")
-const picture_btn = document.getElementById("Picture")
-const ytb_btn = document.getElementById("Youtube")
+let create_btn;
+let music_btn;
+let weather_btn;
+let twitch_btn;
+let power_btn;
+let picture_btn;
+let ytb_btn;
+let currentPage = "";
 
-// LISTEN TO "CLICK" EVENT ON YOUR MODULE BUTTON, THEN LOAD THE RIGHT HTML FILE FOR THIS MODULE
-// DON'T FORGET TO SET MAIN.INNERHTML='' TO RESET CONTENT !
+window.addEventListener('DOMContentLoaded', () => {
 
-music_btn.addEventListener("click", function(e) {
-    main.innerHTML = ''
-    $("#main").load("Music.html");
+    console.log("load modules")
+    main = document.getElementById("main")
+    create_btn = document.getElementById("Videos-Creation")
+    music_btn = document.getElementById("Music")
+    weather_btn = document.getElementById("Weather")
+    twitch_btn = document.getElementById("Twitch")
+    power_btn = document.getElementById("power_button")
+    picture_btn = document.getElementById("Picture")
+    ytb_btn = document.getElementById("Youtube")
+
+    // LISTEN TO "CLICK" EVENT ON YOUR MODULE BUTTON, THEN LOAD THE RIGHT HTML FILE FOR THIS MODULE
+    // DON'T FORGET TO SET MAIN.INNERHTML='' TO RESET CONTENT !
+
+    music_btn.addEventListener("click", function(e) {
+        if (currentPage === "" || currentPage !== "Music") {
+            main.innerHTML = ''
+            loadPage("main", "Music")
+        }
+    })
+    weather_btn.addEventListener("click", function(e) {
+        if (currentPage === "" || currentPage !== "Weather") {
+            main.innerHTML = ''
+            loadPage("main", "Weather")
+        }
+    })
+    ytb_btn.addEventListener("click", function(e) {
+        if (currentPage === "" || currentPage !== "Youtube") {
+            main.innerHTML = ''
+            loadPage("main", "Youtube")
+        }
+    })
+    twitch_btn.addEventListener("click", function(e) {
+        if (currentPage === "" || currentPage !== "Twitch") {
+            main.innerHTML = ''
+            loadPage("main", "Twitch")
+        }
+    })
+    picture_btn.addEventListener("click", function(e) {
+        if (currentPage === "" || currentPage !== "Picture") {
+            main.innerHTML = ''
+            loadPage("main", "Picture")
+        }
+    })
+    create_btn.addEventListener("click", function(e) {
+        if (currentPage === "" || currentPage !== "VideosCreation") {
+            main.innerHTML = ''
+            loadPage("main", "VideosCreation")
+        }
+    })
+    power_btn.addEventListener("click", function(e) {
+        window.api.send("toMain", "Close")
+    })
 })
-weather_btn.addEventListener("click", function(e) {
-    main.innerHTML = ''
-    $("#main").load("Weather.html");
+
+document.addEventListener("load", (event) => {
+    if (event.target.nodeName === "SCRIPT") {
+        console.log("script loaded")
+    }
 })
-ytb_btn.addEventListener("click", function(e) {
-    main.innerHTML = ''
-    $("#main").load("Youtube.html");
-})
-twitch_btn.addEventListener("click", function(e) {
-    main.innerHTML = ''
-    $("#main").load("Twitch.html");
-})
-    /*
-    videos_btn.addEventListener("click", function(e) {
-    main.innerHTML = ''
-    $("#main").load("Videos.html");
-})
-movies_btn.addEventListener("click", function(e) {
-    main.innerHTML = ''
-    $("#main").load("Movies.html");
-})*/
-picture_btn.addEventListener("click", function(e) {
-    main.innerHTML = ''
-    $("#main").load("Picture.html");
-})
-create_btn.addEventListener("click", function(e) {
-    main.innerHTML = ''
-    $("#main").load("VideosCreation.html");
-})
-power_btn.addEventListener("click", function(e) {
-    w.close()
-})
+
+loadPage = (target, id) => {
+    fetch("../html/" + id + ".html")
+    .then(data => {
+        return data.text()
+    })
+    .then(data => {
+        let script = document.createElement("script")
+        let page = document.getElementById(target)
+        script.src = "../javascript/"+ id + ".js"
+        script.addEventListener("load", () => {window.api.send("toMain", "OnPageLoad", id)})
+        page.innerHTML = data;
+        page.appendChild(script)
+        currentPage = id
+    })
+}

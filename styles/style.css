@@ -1,0 +1,273 @@
+:root {
+    --card-width: 250px;
+    --card-height: 330px;
+    --card-margin: 20px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(54, 57, 63);
+    color: white;
+    user-select: none;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+.app-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.app-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.app-title {
+    margin-top: 20px;
+    font-size: 38px;
+}
+
+.app-subtitle {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+
+.slideshow-container {
+    position: relative;
+    width: var(--card-width);
+    height: var(--card-height);
+}
+
+.cards-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    transition: left 0.2s ease-in-out;
+}
+
+.card-div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: var(--card-margin);
+    width: var(--card-width);
+    height: var(--card-height);
+    border-radius: 10px;
+    background-color:rgb(32, 34, 37);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.card-div:only-child .remove-btn {
+    display: none;
+}
+
+.card-div.selected-card:hover .edit-btn {
+    top: 15px;
+}
+
+.card-div.selected-card:hover .remove-btn {
+    top: 15px;
+}
+
+.card-div.selected-card:hover .enter-btn {
+    bottom: 35px;
+}
+
+.card-div.editmode:hover .edit-btn {
+    top: -50px
+}
+
+.card-div.editmode:hover .remove-btn {
+    top: -50px
+}
+
+.card-div.editmode:hover .submit-btn {
+    bottom: 50px
+}
+
+.card-div.editmode:hover .enter-btn {
+    bottom: -50px;
+}
+
+.card-div.editmode .title-div {
+    opacity: 0;
+}
+
+.card-div.editmode .title-input {
+    opacity: 1;
+}
+
+.card-div.selected-card .title-div {
+    color: white;
+}
+
+.selected-card {
+    box-shadow: 0px 0px 36px -10px rgba(202, 204, 207, 1);
+}
+
+.title-div {
+    position: absolute;
+    padding: 0px 10px;
+    font-size: 25px;
+    color: rgba(102, 104, 107, 1);
+    transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.title-input-div {
+    position: absolute;
+    top: calc(50% - 21px);
+    width: 100%;
+    display: none;
+}
+
+.title-input {
+    opacity: 0;
+    width: calc(100% - 40px);
+    height: 40px;
+    font-size: 25px;
+    text-align: center;
+    padding: 0px;
+    margin-left: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    border-top: 1px solid transparent;
+    background-color:rgb(32, 34, 37);
+    color: white;
+    transition: opacity 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
+}
+
+.title-input:focus {
+    border-bottom: 1px solid rgb(62, 166, 255);
+}
+
+.edit-btn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: -50px;
+    right: 15px;
+    border-radius: 3px;
+    background-color: none;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    transition: top 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.edit-btn:hover {
+    cursor: pointer;
+    background-color: rgba(155, 155, 155, 0.1);
+}
+
+.remove-btn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: -50px;
+    left: 15px;
+    border-radius: 3px;
+    background-color: none;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    transition: top 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.remove-btn:hover {
+    cursor: pointer;
+    background-color: rgba(155, 155, 155, 0.1);
+}
+
+.submit-btn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: -50px;
+    border-radius: 3px;
+    background-color: none;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    transition: bottom 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.submit-btn:hover {
+    cursor: pointer;
+    background-color: rgba(155, 155, 155, 0.1);
+}
+
+.submit-btn.editmode {
+    bottom: 35px;
+}
+
+.enter-btn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: -50px;
+    border-radius: 3px;
+    background-color: none;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    transition: bottom 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.enter-btn:hover {
+    cursor: pointer;
+    background-color: rgba(155, 155, 155, 0.1);
+}
+
+.fa {
+    color: white;
+}
+
+.add-btn {
+    margin-top: 40px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 26px;
+    font-weight: bold;
+    width: 250px;
+    height: 45px;
+    border-radius: 10px;
+    background-color:rgb(32, 34, 37);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.add-btn:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 36px -10px rgba(202, 204, 207, 1);
+}
+
+.loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: black
+}

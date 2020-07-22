@@ -1,6 +1,10 @@
 <h1> ⚡ Music ⚡</h1>
-<div class="metadata"></div>
-  <audio controls="controls" id='music' style="margin-top: 150px">
+<div id="metadata" class="metadata" style="display: none;">
+  <img id="music_img" width="200" height="200" src="">
+  <p style="color:black;font-size:20px;" id="music_title"></p>
+  <p style="color:black;font-size:20px;" id="music_artist"></p>
+</div>
+  <audio controls="controls" id='music-controls' style="margin-top: 150px">
     <source id='music_player' src="" type="audio/mpeg">
   </audio>
   <div id="container">
@@ -33,4 +37,3 @@
     </div>
 
   </div>
-<script type="text/javascript" src="../javascript/Music.js"></script>
